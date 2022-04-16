@@ -26,13 +26,13 @@ default: &default
 
 development:
   <<: *default
-  database: photo_twitter_app
+  database: picture_tweet_app
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: photo_twitter_app
+  #username: picture_tweet_app
 
   # The password associated with the postgres role (username).
   #password:
@@ -60,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: photo_twitter_app_test
+  database: picture_tweet_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: photo_twitter_app
-  username: photo_twitter_app
-  password: <%= ENV['PHOTO_TWITTER_APP_DATABASE_PASSWORD'] %>
+  database: picture_tweet_app
+  username: picture_tweet_app
+  password: <%= ENV['PICTURE_TWEET_APP_DATABASE_PASSWORD'] %>
