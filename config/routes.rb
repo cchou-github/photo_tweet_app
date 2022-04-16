@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   # get 'top/index'
-  root to: "top#index"
+  root to: 'sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
