@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authorize
+  before_action :check_login_status, only: [:new, :create]
   before_action :validate_params_presence, only: :create
 
   def new
@@ -13,16 +15,20 @@ class SessionsController < ApplicationController
       render "new"
     else
       session[:user_id] = user.id
-      redirect_to root_url #TODO: i18n
-    endgit
+      redirect_to pictures_path
+    end
   end
   
   def destroy
     session[:user_id] = nil
-    redirect_to root_url
+    redirect_to login_path
   end
 
   private
+  def check_login_status
+    redirect_to pictures_path if current_user
+  end
+
   def validate_params_presence #TODO: check in frontend
     @errors = [] 
     @errors << t(".errors.account_blank") if params[:account].blank?

@@ -1,0 +1,20 @@
+// Place all the styles related to the pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.flex{
+  display: flex;
+  width: 100%;
+  flex-flow: wrap;
+}
+.image_container{
+  width: 250;
+  // height: 300px;
+  border: 1px solid grey;
+  padding: 1px;
+  text-align: center;
+}
+.image_file {
+  max-width: 250px;
+  max-height: 250px
+  // max-height: 300px;
+}

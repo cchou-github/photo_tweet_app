@@ -36,20 +36,19 @@ ja:
         account: ユーザーID
         password: パスワード
         password_confirmation: パスワード確認
-      session:
-        account: ユーザーID
-        password: パスワード
-        password_confirmation: パスワード確認
+      picture:
+        title: タイトル
+        image_file: 画像ファイル
     models:
       user: ユーザー
-  
+      picture: 写真
+
   users:
     fields:
       account: ユーザーID
       password: パスワード
       password_confirmation: パスワード確認
-  sessions:
-    fields:
-      account: ユーザーID
-      password: パスワード
-      password_confirmation: パスワード確認
+  helpers:
+    submit:
+      picture: 
+        create: アップロード
