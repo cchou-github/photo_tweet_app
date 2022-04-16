@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       render "new"
     else
       session[:user_id] = user.id
-      redirect_to pictures_path
+      redirect_to photos_path
     end
   end
   
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   private
   def check_login_status
-    redirect_to pictures_path if current_user
+    redirect_to photos_path if current_user
   end
 
   def validate_params_presence #TODO: check in frontend

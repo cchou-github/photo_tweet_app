@@ -1,10 +1,10 @@
 <h1><%= t(".title")%></h1>
 
-<%= form_for @picture do |f| %>
-  <% if @picture.errors.any? %>
+<%= form_for @photo do |f| %>
+  <% if @photo.errors.any? %>
     <div class="error_messages">
       <ul>
-        <% @picture.errors.full_messages.each do |message| %>
+        <% @photo.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -21,5 +21,5 @@
     <%= f.file_field :image_file %>
   </div>
 
-  <%= f.submit %><%= link_to t(".cancel"), pictures_path %>
+  <%= f.submit %><%= link_to t(".cancel"), photos_path %>
 <% end %>

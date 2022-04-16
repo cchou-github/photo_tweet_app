@@ -1,6 +1,6 @@
-class CreatePictures < ActiveRecord::Migration[6.1]
+class CreatePhotos < ActiveRecord::Migration[6.1]
   def change
-    create_table :pictures do |t|
+    create_table :photos do |t|
       t.references :user, foreign_key: true
 
       t.text :title
@@ -8,6 +8,6 @@ class CreatePictures < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :pictures, :created_at
+    add_index :photos, :created_at
   end
 end

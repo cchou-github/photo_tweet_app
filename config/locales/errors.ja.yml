@@ -1,9 +1,9 @@
-  # タイトル translation missing: ja.activerecord.errors.models.picture.attributes.title.blank
+  # タイトル translation missing: ja.activerecord.errors.models.photo.attributes.title.blank
 ja:
   activerecord:
     errors:
       models:
-        picture:
+        photo:
           attributes:
             title:
               blank: "を入力してください"

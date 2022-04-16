@@ -36,12 +36,12 @@ ja:
         account: ユーザーID
         password: パスワード
         password_confirmation: パスワード確認
-      picture:
+      photo:
         title: タイトル
         image_file: 画像ファイル
     models:
       user: ユーザー
-      picture: 写真
+      photo: 写真
 
   users:
     fields:
@@ -50,5 +50,5 @@ ja:
       password_confirmation: パスワード確認
   helpers:
     submit:
-      picture: 
+      photo: 
         create: アップロード

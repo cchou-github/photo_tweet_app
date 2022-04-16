@@ -1,5 +1,5 @@
 FROM ruby:2.7.2
-ENV APP_ROOT /var/www/picture_tweet_app
+ENV APP_ROOT /var/www/photo_tweet_app
 ENV GEM_HOME /bundle
 ENV BUNDLE_PATH $GEM_HOME
 ENV BUNDLE_APP_CONFIG $BUNDLE_PATH
