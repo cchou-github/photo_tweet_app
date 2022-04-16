@@ -3,6 +3,7 @@ ja:
     index:
       title: 写真一覧
       upload: 写真をアップロード
+      tweet_linked:  MyTweetAppと連携中
     new:
       title: 写真アップロード
       cancel: キャンセル
