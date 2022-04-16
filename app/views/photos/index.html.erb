@@ -1,6 +1,12 @@
 <p>
   <h1><%= t(".title")%></h1>
-  <%= link_to t(".upload"), new_photo_path %>
+  <%= link_to t(".upload"), new_photo_path %><br />
+  <% if session[:tweet_access_token].present? %>
+    <%= link_to "test", @oauth2_tweet_authorize_url %>
+    <%= t(".tweet_linked") %>
+  <% else %>
+    <%= link_to t(".link_with_tweet"), @oauth2_tweet_authorize_url %>
+  <% end %>
 </p>
 
 <p>
@@ -10,6 +16,9 @@
         <%= photo.title %><br>
         <% if photo.image_file.attached? %>
           <%= image_tag(url_for(photo.image_file), class: "image_file") %>
+        <% end %><br>
+        <% if true %>
+          <%= %>
         <% end %>
       </div>
     <% end %>

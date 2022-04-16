@@ -23,5 +23,6 @@ module PhotoTweetApp
     config.active_record.default_timezone = :local
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.autoload_paths += Dir.glob("#{config.root}/lib")
   end
 end

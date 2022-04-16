@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
+  get 'oauth/callback', to: 'oauth2_tweets#callback'
+
   # resources :users
   resources :photos, only: [:index, :new, :create]
   # get 'top/index'
