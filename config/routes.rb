@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
 
-  resources :users
-  resources :sessions
+  # resources :users
+  resources :photos, only: [:index, :new, :create]
   # get 'top/index'
-  root to: "top#index"
+  root to: 'sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

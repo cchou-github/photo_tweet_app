@@ -1,0 +1,17 @@
+<p>
+  <h1><%= t(".title")%></h1>
+  <%= link_to t(".upload"), new_photo_path %>
+</p>
+
+<p>
+  <div class="flex">
+    <% @photos.each do |photo| %>
+      <div class="image_container">
+        <%= photo.title %><br>
+        <% if photo.image_file.attached? %>
+          <%= image_tag(url_for(photo.image_file), class: "image_file") %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</p>

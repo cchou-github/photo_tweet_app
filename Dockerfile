@@ -1,4 +1,11 @@
 FROM ruby:2.7.2
+ENV APP_ROOT /var/www/photo_tweet_app
+ENV GEM_HOME /bundle
+ENV BUNDLE_PATH $GEM_HOME
+ENV BUNDLE_APP_CONFIG $BUNDLE_PATH
+ENV BUNDLE_BIN $BUNDLE_PATH/bin
+ENV PATH $APP_ROOT/bin:$BUNDLE_BIN:/root/.local/bin:$PATH
+
 RUN apt-get update -qq && apt-get install -y build-essential nodejs postgresql-client libpq-dev
 
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
@@ -9,12 +16,15 @@ apt-get update && apt-get install -y yarn
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
 apt-get install -y nodejs
 
-RUN mkdir /photo_twitter_app
-WORKDIR /photo_twitter_app
-COPY Gemfile /photo_twitter_app/Gemfile
-COPY Gemfile.lock /photo_twitter_app/Gemfile.lock
-RUN bundle install
-COPY . /photo_twitter_app
+RUN mkdir -p $APP_ROOT
+WORKDIR $APP_ROOT
+
+COPY package.json yarn.lock $APP_ROOT/
+RUN yarn install
+
+COPY Gemfile Gemfile.lock $APP_ROOT/
+RUN bundle install --jobs 4
+COPY . $APP_ROOT
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

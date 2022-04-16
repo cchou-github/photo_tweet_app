@@ -1,0 +1,6 @@
+ja:
+  sessions:
+    new:
+      login: ログイン
+      form_submit: 
+        login: ログインする
