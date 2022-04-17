@@ -33,7 +33,7 @@ class Oauth2::TweetClient
     if res.is_a?(Net::HTTPSuccess)
       JSON.parse(res.body)["access_token"]
     else
-      raise RequestAccesstokenError.new("#{e.class}: code=#{res.code}, message=#{res.message}")
+      raise RequestAccesstokenError.new("RequestAccesstokenError: code=#{res.code}, message=#{res.message}")
     end
   end
 end

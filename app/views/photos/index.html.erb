@@ -2,7 +2,6 @@
   <h1><%= t(".title")%></h1>
   <%= link_to t(".upload"), new_photo_path %><br />
   <% if session[:tweet_access_token].present? %>
-    <%= link_to "test", @oauth2_tweet_authorize_url %>
     <%= t(".tweet_linked") %>
   <% else %>
     <%= link_to t(".link_with_tweet"), @oauth2_tweet_authorize_url %>
@@ -12,13 +11,18 @@
 <p>
   <div class="flex">
     <% @photos.each do |photo| %>
-      <div class="image_container">
-        <%= photo.title %><br>
-        <% if photo.image_file.attached? %>
-          <%= image_tag(url_for(photo.image_file), class: "image_file") %>
-        <% end %><br>
-        <% if true %>
-          <%= %>
+      <div>
+        <div class="image_container"> 
+          <%= photo.title %><br>
+          <%#TODO: fix style%>
+          <% if photo.image_file.attached? %>
+            <%= image_tag(url_for(photo.image_file), class: "image_file") %>
+          <% end %>
+        </div>
+        <% if session[:tweet_access_token].present? %>
+          <div>
+            <%= button_to t(".tweet"), { controller: :tweet_api, action: :create, photo_id: photo.id } , method: :post  %>
+          </div>
         <% end %>
       </div>
     <% end %>
