@@ -7,6 +7,9 @@ docker-compose run --rm rails bundle exec rake db:drop db:create db:migrate db:s
 account: user_1@phototweet.com
 password: @TweetWithOauth2
 
+error handling
+uuid化
+circleci
 
 
 This README would normally document whatever steps are necessary to get the
