@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize
   before_action :check_login_status, only: [:new, :create]
   before_action :validate_params_presence, only: :create
 

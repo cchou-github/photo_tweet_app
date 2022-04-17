@@ -3,8 +3,7 @@ class CreatePhotos < ActiveRecord::Migration[6.1]
     create_table :photos, id: :uuid do |t|
       t.references :user, foreign_key: true, type: :uuid
 
-      t.text :title
-      t.boolean :flag_tweeted, default: false, null: false
+      t.string :title, limit: 30, null: false
 
       t.timestamps
     end

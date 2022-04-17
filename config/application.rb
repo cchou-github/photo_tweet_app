@@ -24,5 +24,6 @@ module PhotoTweetApp
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.autoload_paths += Dir.glob("#{config.root}/lib")
+    config.active_storage.routes_prefix = '/photo'
   end
 end
