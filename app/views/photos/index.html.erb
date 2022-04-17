@@ -11,16 +11,17 @@
 <p>
   <div class="flex">
     <% @photos.each do |photo| %>
-      <div>
-        <div class="image_container"> 
+      <div class="cell">
+        <div class="grey_border">
           <%= photo.title %><br>
-          <%#TODO: fix style%>
-          <% if photo.image_file.attached? %>
-            <%= image_tag(url_for(photo.image_file), class: "image_file") %>
-          <% end %>
+          <div class="image_container">
+            <% if photo.image_file.attached? %>
+              <%= image_tag(url_for(photo.image_file), class: "image_file") %>
+            <% end %>
+          </div>
         </div>
         <% if session[:tweet_access_token].present? %>
-          <div>
+          <div class="tweet_button">
             <%= button_to t(".tweet"), { controller: :tweet_api, action: :create, photo_id: photo.id } , method: :post  %>
           </div>
         <% end %>
