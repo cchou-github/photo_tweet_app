@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < UserBaseController
   def index
     @photos = current_user.photos.order(created_at: :desc)
     @oauth2_tweet_authorize_url = Oauth2::TweetClient.authorize_url

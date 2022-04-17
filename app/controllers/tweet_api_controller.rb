@@ -1,4 +1,4 @@
-class TweetApiController < ApplicationController
+class TweetApiController < UserBaseController
   def create
     photo = Photo.find_by(id: params[:photo_id])
     access_token = session[:tweet_access_token]

@@ -1,6 +1,5 @@
-class Oauth2TweetsController < ApplicationController
+class Oauth2TweetsController < UserBaseController
   skip_before_action :verify_authenticity_token
-  skip_before_action :authorize
 
   def callback
     access_token = Oauth2::TweetClient.new(code: params[:code]).request_access_token!
