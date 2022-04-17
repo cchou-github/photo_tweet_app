@@ -18,7 +18,7 @@
   <br>
   <div class="field">
     <%= f.label :image_file %>
-    <%= f.file_field :image_file %>
+    <%= f.file_field :image_file, accept: "image/*" %>
   </div>
 
   <%= f.submit %><%= link_to t(".cancel"), photos_path %>

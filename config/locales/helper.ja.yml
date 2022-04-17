@@ -30,24 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 ja:
-  activerecord:
-    attributes:
-      user: &test
-        account: ユーザーID
-        password: パスワード
-        password_confirmation: パスワード確認
-      photo:
-        title: タイトル
-        image_file: 画像ファイル
-    models:
-      user: ユーザー
-      photo: 写真
-
-  users:
-    fields:
-      account: ユーザーID
-      password: パスワード
-      password_confirmation: パスワード確認
   helpers:
     submit:
       photo: 
