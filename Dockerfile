@@ -26,8 +26,6 @@ COPY Gemfile Gemfile.lock $APP_ROOT/
 RUN bundle install --jobs 4
 COPY . $APP_ROOT
 
-RUN rails webpacker:install
-
 EXPOSE 3000
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
