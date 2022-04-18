@@ -1,0 +1,22 @@
+  # タイトル translation missing: ja.activerecord.errors.models.photo.attributes.title.blank
+ja:
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください"
+  activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            title:
+              too_long: "を30文字以内にしてください"
+            image_file:
+              wrong_mime_type: "を正しく選択してください"
+        user:
+          attributes:
+            account:
+            password:
+              invalid: "を8文字以上にしてください"
+            password_confirmation:
+              confirmation: "はパスワードと不一致です"

@@ -1,0 +1,38 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.flex{
+  display: flex;
+  width: 100%;
+  flex-flow: wrap;
+
+  .cell{
+    width: 252px;
+    padding: 1px;
+    margin: 3px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .grey_border{
+      height: 100%;
+      border: 1px solid grey;
+
+      .image_container{
+        height: 100%;
+        .image_file {
+          max-width: 250px;
+          max-height: 250px
+          // max-height: 300px;
+        }
+      }
+    }
+      
+    .tweet_button {
+      margin: 2px
+    }
+  }
+}
+
+

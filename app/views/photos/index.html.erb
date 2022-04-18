@@ -1,0 +1,42 @@
+<p>
+  <h1><%= t(".title")%></h1>
+  <%= link_to t(".upload"), new_photo_path %><br />
+  <% if session[:tweet_access_token].present? %>
+    <%= t(".tweet_linked") %>
+  <% else %>
+    <%= link_to t(".link_with_tweet"), @oauth2_tweet_authorize_url %>
+  <% end %>
+</p>
+
+<p>
+  <% flash.each do |key, value| %>
+      <p class="flash_<%= key %>">
+        <%= value %>
+      </p>
+  <% end %>
+</p>
+
+<p>
+  <div class="flex">
+    <% @photos.each do |photo| %>
+      <div class="cell">
+        <div class="grey_border">
+          <%= photo.title %><br>
+          <div class="image_container">
+            <% if photo.image_file.attached? %>
+              <%= image_tag(url_for(photo.image_file), class: "image_file") %>
+            <% end %>
+          </div>
+        </div>
+        <% if session[:tweet_access_token].present? %>
+          <div class="tweet_button">
+            <%= button_to t(".tweet"), 
+              photo_tweet_path(photo.id) ,
+              method: :get,
+              data: { disable_with: t(".tweeting") }  %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</p>

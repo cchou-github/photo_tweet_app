@@ -1,0 +1,24 @@
+<h1><%= t ".login" %></h1>
+<% if @errors.present? %>
+  <div class="error_messages">
+    <ul>
+      <% @errors.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag login_path do |f|  %>
+  <div class="field">
+    <br />
+    <%= label_tag :account, User.human_attribute_name("account") %><br />
+    <%= text_field_tag :account, params[:account] %>
+  </div>
+  <div class="field">
+    <%= label_tag :password, User.human_attribute_name("password") %><br /> 
+    <%= password_field_tag :password %>
+  </div>
+  <br />
+  <div class="actions"><%= submit_tag t(".form_submit.login") %></div>
+<% end %>

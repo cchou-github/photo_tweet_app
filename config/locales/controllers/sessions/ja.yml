@@ -1,0 +1,7 @@
+ja:
+  sessions:
+    create:
+      errors:
+        account_blank: "ユーザーIDを入力してください"
+        password_blank: "パスワードを入力してください"
+        authentication_failed: "ユーザーIDとパスワードが一致するユーザーが存在しない"
