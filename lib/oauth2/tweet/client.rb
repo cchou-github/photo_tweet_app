@@ -20,7 +20,7 @@ class Oauth2::Tweet::Client
 
   def request_access_token!
     uri = URI(@host + TOKEN_ENDPOINT)
-
+    
     params = {
       code: @code,
       client_id: ENV["OAUTH2_TWEET_CLIENT_ID"], 
@@ -32,7 +32,6 @@ class Oauth2::Tweet::Client
     
     request = Net::HTTP::Post.new(uri)
     client = create_client(uri)
-    raise RequestAccesstokenError
     res = client.request(request) #TODO: Net::ReadTimeout error handling
     
     if res.is_a?(Net::HTTPSuccess)

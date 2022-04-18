@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_examples'
 
-RSpec.describe "Photos", type: :request do
+RSpec.describe "Photos request", type: :request do
   describe "GET /photo/new" do
     subject{ get new_photo_path }
 
@@ -42,12 +42,12 @@ RSpec.describe "Photos", type: :request do
     end
 
     context "when user was logged in" do
-      context "when tweet app is not linked" do
-        before do
-          login user
-          subject
-        end
+      before do
+        login user
+        subject
+      end
 
+      context "when tweet app is not linked" do
         it "has 200 status and render_template to index" do
           expect(response).to have_http_status 200
           expect(response).to render_template :index
@@ -64,11 +64,6 @@ RSpec.describe "Photos", type: :request do
 
       context "when tweet app is linked" do
         let!(:rspec_session) {{ tweet_access_token: "test_token" }} # sessionを指定する https://qiita.com/tmak_tsukamoto/items/c42101aeec119a2816ac
-
-        before do
-          login user
-          subject
-        end
 
         it "has 200 status and render_template to index" do
           expect(response).to have_http_status 200

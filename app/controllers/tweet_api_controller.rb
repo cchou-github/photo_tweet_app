@@ -1,8 +1,8 @@
 class TweetApiController < UserBaseController
   before_action :check_session_token
 
-  def create
-    photo = Photo.find_by(id: params[:photo_id])
+  def tweet
+    photo = current_user.photos.find(params[:photo_id])
     access_token = session[:tweet_access_token]
     
     tweet_client = Api::Tweet::Client.new( # TODO: make async
@@ -20,6 +20,6 @@ class TweetApiController < UserBaseController
 
   private
   def check_session_token
-    redirect_to photos_index, alert: t(".errors.tweet_failed") if session[:tweet_access_token].blank?
+    redirect_to photos_path, alert: t(".errors.tweet_failed") if session[:tweet_access_token].blank?
   end
 end
