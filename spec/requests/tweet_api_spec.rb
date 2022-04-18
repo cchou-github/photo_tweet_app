@@ -3,10 +3,13 @@ require 'support/shared_examples'
 
 RSpec.describe "TweetApi request", type: :request do
   describe "GET photo/:photo_id/tweet" do
-    subject { get photo_tweet_path(photo.id) }
+    subject { get photo_tweet_path(photo_id) }
 
-    let(:user)  { create :user }
+    let(:user) { create :user }
+    let(:other_user) { create :user }
     let(:photo) { create :photo, user: user }
+    let(:photo_id) { photo.id }
+    let(:other_user_photo) { create :photo, user: other_user }
 
     context "when user is not logged in" do
       before { subject }
@@ -26,9 +29,27 @@ RSpec.describe "TweetApi request", type: :request do
         end
       end
 
+      
+
       context "when there is token in session" do
         let(:access_token) { "test_token" }
         let!(:rspec_session) {{ tweet_access_token: access_token }}
+
+        context "when the photo doesn't exist" do
+          let(:photo_id) { 999999 }
+
+          it "raises ActionController::RoutingError" do
+            expect{ get photo_tweet_path(99999) }.to raise_error(ActionController::RoutingError)
+          end
+        end
+  
+        context "when tweet other user's photo" do
+          let(:photo_id) { other_user_photo.id }
+
+          it "raises ActionController::RoutingError" do
+            expect{ get photo_tweet_path(other_user_photo.id) }.to raise_error(ActionController::RoutingError)
+          end
+        end
 
         context "when the tweet is success" do
           before do
