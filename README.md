@@ -15,10 +15,14 @@ password: `@TweetWithOauth2`
 `cp .env.example.yml .env.yml`  
 .env.ymlの中の環境変数を記入してください
 
+## サーバ起動
+`docker-compose up`
+
 ## 時間あればやりたいこと
 - idをuuid化
 - 今のテストはrequest specしかないですが、テストをもっと充実したいです
 - 「ツイートイする」をフロントエンドで非同期
+- remember meの実装
 - photo閲覧権限の見直し
 
 ## その他
