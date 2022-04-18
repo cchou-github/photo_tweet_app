@@ -1,36 +1,26 @@
 # README
-docker-compose build
-docker-compose run --rm rails bundle exec rake db:drop db:create db:migrate db:seed
 
-
-初期ユーザー
+## 初期ユーザー
 account: user_1@phototweet.com
 password: @TweetWithOauth2
 
-error handling
-uuid化
-circleci
+## 環境構築
+1. Build Docker Image
+`docker-compose build`
 
+2. DB構築
+`docker-compose run --rm rails bundle exec rake db:drop db:create db:migrate db:seed`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+3. 環境変数の設置
+`cp .env.example.yml .env.yml`
+`.env.yml`の中の環境変数を記入してください
 
-Things you may want to cover:
+## 時間あればやりたいこと
+- idをuuid化
+- テストを充実する
+- "ツイートイする"をフロントエンドで非同期
+- photoのアクセス権限の向上
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## その他
+- circleciを使っています
+- rspecの部分はgemを使いました
