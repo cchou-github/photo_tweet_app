@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :request do
+RSpec.describe "Sessions request", type: :request do
   describe "GET /login" do
     subject{ get login_path }
 

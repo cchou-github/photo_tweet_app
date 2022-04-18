@@ -1,6 +1,6 @@
 ja:
   tweet_api:
-    create:
+    tweet:
       tweet_success: "ツイート成功しました"
       errors:
-        tweet_failed: "ツイートに失敗しました"
+        tweet_failed: "ツイート失敗しました"
