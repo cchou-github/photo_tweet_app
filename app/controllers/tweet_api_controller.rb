@@ -1,21 +1,25 @@
 class TweetApiController < UserBaseController
+  before_action :check_session_token
+
   def create
     photo = Photo.find_by(id: params[:photo_id])
     access_token = session[:tweet_access_token]
     
-    #TODO: raise_not_found 
-    tweet_client = Api::TweetClient.new( #TODO: make async
+    tweet_client = Api::Tweet::Client.new( # TODO: make async
       access_token: access_token, 
       photo_title: photo.title, 
       photo_url: url_for(photo.image_file)
     )
-    tweet_client.post_tweet!
+    tweet_client.post_tweet! #TODO: Net::ReadTimeout error handling
     
-    flash.notice = t(".tweet_success")
-    return redirect_to photos_path
-  rescue Api::TweetClient::TweetApiError, Api::TweetClient::NoAccessToken => e
+    return redirect_to photos_path, notice: t(".tweet_success")
+  rescue Api::Tweet::Errors::TweetApiError, Api::Tweet::Errors::NoAccessTokenError => e
     logger.error e.message
-    flash.alert = t(".errors.tweet_failed")
-    return redirect_to photos_path
+    return redirect_to photos_path, alert: t(".errors.tweet_failed")
+  end
+
+  private
+  def check_session_token
+    redirect_to photos_index, alert: t(".errors.tweet_failed") if session[:tweet_access_token].blank?
   end
 end
