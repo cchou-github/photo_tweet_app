@@ -9,6 +9,14 @@
 </p>
 
 <p>
+  <% flash.each do |key, value| %>
+      <p class="flash_<%= key %>">
+        <%= value %>
+      </p>
+  <% end %>
+</p>
+
+<p>
   <div class="flex">
     <% @photos.each do |photo| %>
       <div class="cell">
@@ -22,7 +30,10 @@
         </div>
         <% if session[:tweet_access_token].present? %>
           <div class="tweet_button">
-            <%= button_to t(".tweet"), { controller: :tweet_api, action: :create, photo_id: photo.id } , method: :post  %>
+            <%= button_to t(".tweet"), 
+              { controller: :tweet_api, action: :create, photo_id: photo.id } , 
+              method: :post, 
+              data: { disable_with: t(".tweeting") }  %>
           </div>
         <% end %>
       </div>

@@ -11,6 +11,7 @@ class TweetApiController < UserBaseController
     )
     tweet_client.post_tweet!
     
+    flash.notice = t(".tweet_success")
     return redirect_to photos_path
   rescue Api::TweetClient::TweetApiError, Api::TweetClient::NoAccessToken => e
     logger.error e.message

@@ -6,6 +6,7 @@ ja:
       tweet_linked:  MyTweetAppと連携中
       link_with_tweet: MyTweetAppと連携
       tweet: ツイートする
+      tweeting: ツイート中
     new:
       title: 写真アップロード
       cancel: キャンセル
