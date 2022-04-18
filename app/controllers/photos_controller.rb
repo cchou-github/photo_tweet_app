@@ -14,7 +14,7 @@ class PhotosController < UserBaseController
     if @photo.save
       redirect_to photos_path
     else
-      render new_photo_path
+      render :new
     end
   end
 

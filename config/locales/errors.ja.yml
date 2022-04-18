@@ -10,7 +10,7 @@ ja:
         photo:
           attributes:
             title:
-              too_long: "が長すぎる"
+              too_long: "を30文字以内にしてください"
             image_file:
               wrong_mime_type: "を正しく選択してください"
         user:

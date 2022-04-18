@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Sessions", type: :request do
   describe "GET /login" do
-    context "when user is not logged in" do
-      subject{ get login_path }
+    subject{ get login_path }
 
+    context "when user is not logged in" do
       it "has 200 status and render_template new" do
         subject
 
@@ -14,8 +14,6 @@ RSpec.describe "Sessions", type: :request do
     end
 
     context "when user was logged in" do
-      subject{ get login_path }
-
       let(:user) { create :user }
 
       it "has 302 status and redirect to photos_path" do
@@ -116,5 +114,5 @@ RSpec.describe "Sessions", type: :request do
         expect(response).to redirect_to login_path
       end
     end
-  end
+  end    
 end
